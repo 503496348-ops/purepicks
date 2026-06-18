@@ -11,8 +11,8 @@ source .venv/bin/activate
 
 启动服务后，可以访问以下地址查看 API 文档：
 
-- Swagger UI: http://localhost:8188/docs
-- ReDoc: http://localhost:8188/redoc
+- Swagger UI: /docs
+- ReDoc: /redoc
 
 ## API 端点
 
@@ -25,7 +25,7 @@ source .venv/bin/activate
 ###  1、健康检查接口
 
 ```bash
-curl "http://localhost:8188/health"
+curl "http://localhost:8080/health"
 ```
 
 ```json
@@ -39,7 +39,7 @@ curl "http://localhost:8188/health"
 ### 2、工具列表接口
 
 ```bash
-curl -X POST 'http://localhost:8188/v1/tool/list' -H "Content-Type: application/json" -d '{
+curl -X POST 'http://localhost:8080/v1/tool/list' -H "Content-Type: application/json" -d '{
         "server_url": "https://mcp.amap.com/sse?key=xxxxxxxxxxxx"
 }'
 ```
@@ -448,7 +448,7 @@ curl -X POST 'http://localhost:8188/v1/tool/list' -H "Content-Type: application/
 ### 3、工具调用接口
 
 ```bash
-curl -X POST 'http://localhost:8188/call_tool' -H "Content-Type: application/json" -d '{
+curl -X POST 'http://localhost:8080/call_tool' -H "Content-Type: application/json" -d '{
     "server_url": "https://mcp.amap.com/sse?key=xxxxxxxxxxxx",
     "name": "maps_geo",
     "arguments": {

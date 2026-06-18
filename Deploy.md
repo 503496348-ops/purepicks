@@ -37,7 +37,7 @@ cd purepicks/ui && sh start.sh
 
 如果报错参见上面信息前期准备看看有没有pnpm
 
-出现 Local:   http://localhost:3000/ 即成功！
+出现 Local: http://localhost:3000/ 即成功！
 
 ---
 ## Step 2: 启动后端服务

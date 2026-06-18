@@ -10,9 +10,7 @@ English | [简体中文](README.md)
 
 PurePicks is an end-to-end multi-agent e-commerce recommendation system that combines the best of three open-source projects:
 
-1. **原 JoyAgent-JDGenie** (⭐11,863) — High-completion general multi-agent product framework
-2. **原 eCan.ai** (⭐15) — Visual LangGraph editor + Browser automation + OCR + A2A protocol
-3. **e-commerce-agents** (⭐7) — A2A protocol e-commerce agents with Microsoft Agent Framework
+PurePicks integrates multi-agent collaboration, NL2SQL smart queries, browser automation, OCR+CV, A2A protocol, and visual workflow capabilities into a complete end-to-end e-commerce intelligent agent system.
 
 For any user query or task, PurePicks can directly provide recommendations, analysis reports, or execute automation tasks. For example, when asked "recommend some cost-effective wireless earbuds", PurePicks can generate a comparative analysis report.
 
@@ -73,8 +71,8 @@ cd purepicks-client && python server.py
 
 ### Access
 
-- Frontend: http://localhost:8080
-- API: http://localhost:8088
+Frontend: http://localhost:3000
+API: http://localhost:8080
 
 ## Agent Catalog
 

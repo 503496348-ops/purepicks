@@ -10,9 +10,7 @@
 
 PurePicks（自然良品）是一个开源的端到端多Agent电商推荐系统，融合了三大开源项目的精华：
 
-1. **原 JoyAgent-JDGenie**（⭐11,863）— 高完成度通用多智能体产品框架
-2. **原 eCan.ai**（⭐15）— 可视化LangGraph编辑器 + 浏览器自动化 + OCR + A2A协议
-3. **e-commerce-agents**（⭐7）— 基于Microsoft Agent Framework的A2A协议电商Agent
+PurePicks 整合了多Agent协作、NL2SQL智能问数、浏览器自动化、OCR+CV、A2A协议和可视化工作流等核心能力，打造完整的端到端电商智能体系统。
 
 ## 核心能力
 

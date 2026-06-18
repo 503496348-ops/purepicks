@@ -89,8 +89,8 @@ cd purepicks-client && python server.py
 
 ### 访问
 
-- 前端: http://localhost:8080
-- API: http://localhost:8088
+前端: http://localhost:3000
+API: http://localhost:8080
 
 ## 项目结构
 
