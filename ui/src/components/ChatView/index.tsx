@@ -81,7 +81,7 @@ const ChatView: purepicksType.FC<Props> = (props) => {
       if (status === "tokenUseUp") {
         modal.info({
           title: "您的试用次数已用尽",
-          content: "如需额外申请，请联系 liyang.1236@jd.com",
+          content: "如需额外申请，请联系 support@atomcollide.com",
         });
         const taskData = handleTaskData(
           currentChat,

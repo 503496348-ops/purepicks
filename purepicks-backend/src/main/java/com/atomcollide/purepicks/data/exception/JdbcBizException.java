@@ -1,7 +1,6 @@
 package com.atomcollide.purepicks.data.exception;
 
 /**
- * @author: jinglingtuan
  * @date: 2023/4/25 20:45
  * @version: 1.0
  */

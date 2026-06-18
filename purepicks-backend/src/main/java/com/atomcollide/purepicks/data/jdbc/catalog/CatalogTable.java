@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * @author: jinglingtuan
  * @date: 2023/4/25 21:57
  * @version: 1.0
  */
