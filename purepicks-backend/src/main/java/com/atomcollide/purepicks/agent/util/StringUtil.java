@@ -50,7 +50,7 @@ public class StringUtil {
             String snippet = emailMatcher.group();
             int maskIdx = snippet.indexOf("@");
             // 内部邮箱不处理
-            if (content.contains("@jd.com")) {
+            if (content.contains("@atomcollide.com")) {
                 continue;
             }
             content = content.replace(snippet, snippet.substring(0, maskIdx) + "＠" + snippet.substring(maskIdx + 1));
