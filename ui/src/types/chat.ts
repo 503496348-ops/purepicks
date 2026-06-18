@@ -1,0 +1,97 @@
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace CHAT {
+    export type ChatItem = purepicksType.Merge<
+      Pick<MESSAGE.Question, "sessionId" | "query" | "requestId">,
+      {
+        files: TFile[];
+        plan?: MESSAGE.Plan;
+        forceStop: boolean;
+        tip?: string;
+        multiAgent: MESSAGE.MultiAgent;
+        agentType?: MESSAGE.ResultMap["agentType"];
+        conclusion?: Task;
+        responseType?: string;
+        loading: boolean;
+        tasks: Task[][];
+        thought?: string;
+        response?: string;
+        taskStatus?: MESSAGE.MsgItem["taskStatus"];
+        planList?: PlanItem[];
+      }
+    >;
+
+    type PlanItem = {
+      name: string;
+      list: string[];
+    };
+
+    export type TFile = {
+      name: string;
+      url: string;
+      type: string;
+      size: number;
+    };
+
+    export type TInputInfo = {
+      files?: TFile[];
+      message: string;
+      outputStyle?: string;
+      deepThink: boolean;
+    };
+
+    export type TAbortController = {
+      signal: AbortSignal;
+      abort(reason?: any): void;
+    };
+
+    export type FetchEventSourceInit = {
+      onopen: (event: Event) => void;
+      onmessage: (event: any) => void;
+      onerror: (event?: Event) => void;
+      onclose: (event?: Event) => void;
+      headers?: Record<string, string>;
+      body?: string;
+    };
+
+    export type Task = purepicksType.Merge<
+      MESSAGE.Task,
+      {
+        resultMap: purepicksType.Merge<
+          MESSAGE.ResultMap,
+          {
+            searchResult?: purepicksType.Merge<
+              MESSAGE.SearchResult,
+              {
+                docs: MESSAGE.Doc[];
+              }
+            >;
+            code?: string;
+          }
+        >;
+        id: string;
+        children?: Task[];
+      }
+    >;
+
+    export type FileList = MESSAGE.FileInfo;
+
+    type PlanStatus = MESSAGE.PlanStatus;
+
+    export type Plan = MESSAGE.Plan;
+
+    export type Product = {
+      name: string;
+      img: string;
+      type: string;
+      placeholder: string;
+      color: string;
+    };
+
+    export type ModelInfo = {
+      modelName: string;
+      modelCode: string;
+      schemaList: { columnComment: string; columnName: string; dataType: string; columnId: string }[];
+    };
+  }
+}
