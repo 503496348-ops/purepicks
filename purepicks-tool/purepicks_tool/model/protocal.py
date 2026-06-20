@@ -123,3 +123,21 @@ class SopChooseRequest(BaseModel):
     query: str = Field(description="用户问题")
     sop_list: Optional[List[Dict]] = Field(default=[],
         alias="sopList", description="SOP 列表，包含每一个sop")
+
+
+class SentimentAnalysisRequest(BaseModel):
+    """评论情感分析请求"""
+    request_id: str = Field(alias="requestId", description="Request ID")
+    task: str = Field(description="分析任务描述")
+    reviews: List[str] = Field(description="评论列表")
+    product_name: Optional[str] = Field(default=None, alias="productName", description="商品名称")
+    stream: bool = Field(default=True, description="是否流式返回")
+
+
+class PriceCompareRequest(BaseModel):
+    """多平台比价请求"""
+    request_id: str = Field(alias="requestId", description="Request ID")
+    task: str = Field(description="比价任务描述")
+    product_name: str = Field(alias="productName", description="商品名称")
+    platforms: Optional[List[str]] = Field(default=None, description="目标平台列表")
+    stream: bool = Field(default=True, description="是否流式返回")

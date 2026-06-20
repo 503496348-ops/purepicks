@@ -112,14 +112,16 @@ purepicks/
 
 ## Agent目录
 
-| Agent | 功能 | 技术栈 |
-|-------|------|--------|
-| 报告Agent | 生成分析报告（网页/PPT） | LangGraph + LLM |
-| 推荐Agent | 电商产品推荐 | NL2SQL + RAG |
-| 数据Agent | 智能问数与诊断分析 | DGP协议 + SQL |
-| 搜索Agent | 产品搜索与对比 | Browser-use + Crawl4ai |
-| 客服Agent | 客户服务与问答 | RAG + A2A |
-| 文件Agent | 文件处理与OCR | OCR + CV |
+|| Agent | 功能 | 技术栈 |
+||-------|------|--------|
+|| 报告Agent | 生成分析报告（网页/PPT） | LangGraph + LLM |
+|| 推荐Agent | 电商产品推荐 | NL2SQL + RAG |
+|| 数据Agent | 智能问数与诊断分析 | DGP协议 + SQL |
+|| 搜索Agent | 产品搜索与对比 | Browser-use + Crawl4ai |
+|| 客服Agent | 客户服务与问答 | RAG + A2A |
+|| 文件Agent | 文件处理与OCR | OCR + CV |
+|| 情感分析Agent | 商品评论情感分析 | LLM + NLP |
+|| 比价Agent | 多平台商品比价 | DeepSearch + LLM |
 
 ## 文档
 

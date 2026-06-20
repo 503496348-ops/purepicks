@@ -148,6 +148,24 @@ public class purepicksConfig {
         this.dataAnalysisToolPamras = JSON.parseObject(jsonStr, Map.class);
     }
 
+    /**
+     * SentimentAnalysisTool 配置
+     */
+    private Map<String, Object> sentimentAnalysisToolPamras = new HashMap<>();
+    @Value("${autobots.autoagent.tool.sentiment_analysis_tool.params:{}}")
+    public void setSentimentAnalysisToolPamras(String jsonStr) {
+        this.sentimentAnalysisToolPamras = JSON.parseObject(jsonStr, Map.class);
+    }
+
+    /**
+     * PriceCompareTool 配置
+     */
+    private Map<String, Object> priceCompareToolPamras = new HashMap<>();
+    @Value("${autobots.autoagent.tool.price_compare_tool.params:{}}")
+    public void setPriceCompareToolPamras(String jsonStr) {
+        this.priceCompareToolPamras = JSON.parseObject(jsonStr, Map.class);
+    }
+
     @Value("${autobots.autoagent.tool.file_tool.truncate_len:5000}")
     private Integer fileToolContentTruncateLen;
 

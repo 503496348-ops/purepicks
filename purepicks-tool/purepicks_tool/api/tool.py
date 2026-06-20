@@ -18,7 +18,7 @@ from jinja2 import Template
 from sse_starlette import ServerSentEvent, EventSourceResponse
 
 from purepicks_tool.model.code import ActionOutput, CodeOuput
-from purepicks_tool.model.protocal import TableRAGRequest, AutoAnalysisRequest, CIRequest, CalEngineRequest, ReportRequest, DeepSearchRequest, NL2SQLRequest, SopChooseRequest
+from purepicks_tool.model.protocal import TableRAGRequest, AutoAnalysisRequest, CIRequest, CalEngineRequest, ReportRequest, DeepSearchRequest, NL2SQLRequest, SopChooseRequest, SentimentAnalysisRequest, PriceCompareRequest
 from purepicks_tool.util.file_util import upload_file
 from purepicks_tool.util.llm_util import ask_llm
 from purepicks_tool.util.prompt_util import get_prompt
@@ -30,6 +30,8 @@ from purepicks_tool.tool.auto_analysis import AutoAnalysisAgent
 from purepicks_tool.tool.nl2sql import NL2SQLAgent
 from purepicks_tool.tool.table_rag import TableRAGAgent
 from purepicks_tool.tool.plan_sop import PlanSOP
+from purepicks_tool.tool.sentiment_analysis import SentimentAnalysisAgent
+from purepicks_tool.tool.price_compare import PriceCompareAgent
 load_dotenv()
 
 
@@ -420,5 +422,93 @@ async def post_sop_recall(
     sop_mode, choosed_sop_string = pl_sop.sop_choose(query=query, sop_list=sop_list)
     
     return {"code": 200, "data": {"sop_mode": sop_mode, "choosed_sop_string": choosed_sop_string}, "requestId": body.request_id}
+
+
+@router.post("/sentiment_analysis")
+async def post_sentiment_analysis(body: SentimentAnalysisRequest):
+    """商品评论情感分析"""
+    if body.stream:
+        queue = asyncio.Queue()
+        async def _stream(queue):
+            while True:
+                data = await queue.get()
+                if data == "[DONE]":
+                    yield ServerSentEvent(data=data)
+                    break
+                if not isinstance(data, str):
+                    data = json.dumps(data, ensure_ascii=False)
+                yield ServerSentEvent(data=data)
+
+        def run_task(context, queue, body):
+            context.run(lambda: asyncio.run(
+                SentimentAnalysisAgent(queue=queue).run(
+                    task=body.task,
+                    reviews=body.reviews,
+                    request_id=body.request_id,
+                    product_name=body.product_name,
+                    stream=True,
+                )
+            ))
+
+        thread = threading.Thread(target=run_task, args=(contextvars.copy_context(), queue, body), daemon=True)
+        thread.start()
+        return EventSourceResponse(
+            _stream(queue),
+            ping_message_factory=lambda: ServerSentEvent(data="heartbeat"),
+            ping=15,
+        )
+    else:
+        result = await SentimentAnalysisAgent().run(
+            task=body.task,
+            reviews=body.reviews,
+            request_id=body.request_id,
+            product_name=body.product_name,
+            stream=False,
+        )
+        return {"code": 200, "data": result, "requestId": body.request_id}
+
+
+@router.post("/price_compare")
+async def post_price_compare(body: PriceCompareRequest):
+    """多平台商品比价"""
+    if body.stream:
+        queue = asyncio.Queue()
+        async def _stream(queue):
+            while True:
+                data = await queue.get()
+                if data == "[DONE]":
+                    yield ServerSentEvent(data=data)
+                    break
+                if not isinstance(data, str):
+                    data = json.dumps(data, ensure_ascii=False)
+                yield ServerSentEvent(data=data)
+
+        def run_task(context, queue, body):
+            context.run(lambda: asyncio.run(
+                PriceCompareAgent(queue=queue).run(
+                    task=body.task,
+                    product_name=body.product_name,
+                    request_id=body.request_id,
+                    platforms=body.platforms,
+                    stream=True,
+                )
+            ))
+
+        thread = threading.Thread(target=run_task, args=(contextvars.copy_context(), queue, body), daemon=True)
+        thread.start()
+        return EventSourceResponse(
+            _stream(queue),
+            ping_message_factory=lambda: ServerSentEvent(data="heartbeat"),
+            ping=15,
+        )
+    else:
+        result = await PriceCompareAgent().run(
+            task=body.task,
+            product_name=body.product_name,
+            request_id=body.request_id,
+            platforms=body.platforms,
+            stream=False,
+        )
+        return {"code": 200, "data": result, "requestId": body.request_id}
 
 

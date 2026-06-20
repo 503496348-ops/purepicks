@@ -8,6 +8,8 @@ import com.atomcollide.purepicks.agent.printer.Printer;
 import com.atomcollide.purepicks.agent.printer.SSEPrinter;
 import com.atomcollide.purepicks.agent.tool.ToolCollection;
 import com.atomcollide.purepicks.agent.tool.common.*;
+import com.atomcollide.purepicks.agent.tool.common.SentimentAnalysisTool;
+import com.atomcollide.purepicks.agent.tool.common.PriceCompareTool;
 import com.atomcollide.purepicks.agent.tool.mcp.McpTool;
 import com.atomcollide.purepicks.agent.util.DateUtil;
 import com.atomcollide.purepicks.agent.util.ThreadUtil;
@@ -218,6 +220,16 @@ public class purepicksController {
                     DataAnalysisTool dataAnalysisTool = new DataAnalysisTool();
                     dataAnalysisTool.setAgentContext(agentContext);
                     toolCollection.addTool(dataAnalysisTool);
+                }
+                if (agentToolList.contains("sentiment_analysis")) {
+                    SentimentAnalysisTool sentimentTool = new SentimentAnalysisTool();
+                    sentimentTool.setAgentContext(agentContext);
+                    toolCollection.addTool(sentimentTool);
+                }
+                if (agentToolList.contains("price_compare")) {
+                    PriceCompareTool priceCompareTool = new PriceCompareTool();
+                    priceCompareTool.setAgentContext(agentContext);
+                    toolCollection.addTool(priceCompareTool);
                 }
             }
         }
