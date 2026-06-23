@@ -1,7 +1,7 @@
 ---
 name: purepicks
 version: 1.0.0
-description: 自然良品（PurePicks）— 多Agent电商推荐系统。端到端智能体+NL2SQL+报告生成+浏览器自动化
+description: "端到端多Agent电商推荐系统。NL2SQL智能问数+产品发现+订单管理+评论分析+库存管理。当需要电商数据分析、产品推荐、竞品监控时使用。"
 author: AtomCollide-智械工坊团队
 license: Apache-2.0
 triggers:
@@ -14,6 +14,8 @@ triggers:
 ---
 
 # PurePicks Skill
+
+> 📖 详细文档见 `references/` 目录
 
 - **name**: purepicks
 - **version**: 1.0.0
@@ -101,3 +103,12 @@ Apache-2.0
 ## 版权
 
 Copyright 2026 AtomCollide-智械工坊
+
+## 工作流
+
+使用此技能时，按以下步骤执行：
+- [ ] 1. 确认用户需求和使用场景
+- [ ] 2. 加载相关代码和配置
+- [ ] 3. 执行核心功能
+- [ ] 4. 验证输出结果
+- [ ] 5. 反馈给用户
