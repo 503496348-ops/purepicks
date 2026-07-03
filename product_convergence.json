@@ -1,0 +1,21 @@
+{
+  "repo": "purepicks",
+  "entrypoints": [
+    "purepicks-backend/src/main/assembly/bin/start.sh",
+    "purepicks-backend/start.sh",
+    "purepicks-client/main.py",
+    "purepicks-client/server.py",
+    "purepicks-client/start.sh",
+    "purepicks-tool/server.py",
+    "purepicks-tool/start.sh",
+    "ui/start.sh"
+  ],
+  "smoke_targets": [
+    "purepicks-tool/purepicks_tool/tool/final_answer_check.py",
+    "scripts/product_convergence_gate.py"
+  ],
+  "known_external_reference_files": [
+    "scripts/product_convergence_gate.py"
+  ],
+  "policy": "External/fusion references are allowed only when explicitly reviewed here; new fusion work must add a smoke target or entrypoint wiring."
+}
