@@ -71,17 +71,20 @@ PurePicks 整合了多Agent协作、NL2SQL智能问数、浏览器自动化、OC
 git clone https://github.com/503496348-ops/purepicks.git
 cd purepicks
 
-# 启动后端
-cd purepicks-backend && sh build.sh
+# 启动后端（Java）
+cd purepicks-backend && sh build.sh   # 脚本位于 purepicks-backend/build.sh
 
-# 启动前端
-cd ui && sh start.sh
+# 启动前端（Vue）
+cd ui && sh start.sh                  # 脚本位于 ui/start.sh
 
-# 启动工具服务
-cd purepicks-tool && python server.py
+# 启动工具服务（NL2SQL 等）
+cd purepicks-tool && python server.py # 入口 purepicks-tool/server.py
 
-# 启动客户端
-cd purepicks-client && python server.py
+# 启动 MCP 客户端 API
+cd purepicks-client && python server.py  # 或 python main.py（同 uvicorn:8188）
+
+# 一键脚本（仓库根目录）
+# sh PurePicks_start.sh
 ```
 
 ## 项目结构
