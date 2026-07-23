@@ -12,3 +12,6 @@ Thumbs.db
 __pycache__/
 *.pyc
 
+
+ui/.env
+
