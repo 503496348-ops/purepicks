@@ -1,6 +1,10 @@
 ---
 name: purepicks
 description: "自然良品电商推荐 — Table RAG 搜索、商品洞察分析、MCP 服务"
+license: MIT
+metadata:
+  author: 503496348-ops
+  version: 1.0.0
 triggers:
   - "电商"
   - "商品推荐"
