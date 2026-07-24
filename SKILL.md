@@ -5,16 +5,18 @@ license: MIT
 metadata:
   author: 503496348-ops
   version: 1.0.0
-triggers:
-  - "电商"
-  - "商品推荐"
-  - "表格检索"
-  - "RAG"
-  - "purepicks"
-  - "自然良品"
 ---
 
 # PurePicks — 自然良品电商推荐
+
+## 触发条件
+
+- "电商"
+- "商品推荐"
+- "表格检索"
+- "RAG"
+- "purepicks"
+- "自然良品"
 
 基于 Table RAG 的商品搜索 + 洞察分析 + MCP 服务端。
 
